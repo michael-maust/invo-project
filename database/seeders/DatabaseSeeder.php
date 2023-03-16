@@ -25,7 +25,9 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         foreach ($civilizationData as $civilization) {
-        Civilization::create($civilization);
+            $civilization['civilization_bonus'] = json_encode($civilization['civilization_bonus']);
+
+            Civilization::create($civilization);
         }
     }
 }
