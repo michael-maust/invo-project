@@ -19,7 +19,7 @@ function MutateModal({ isEditing, setIsEditing, selectedCivilization }) {
 
     useEffect(() => {
         if (isEditing) return;
-        methods;
+        methods.reset({ civilization_bonus: [""] });
     }, [isEditing]);
 
     return (

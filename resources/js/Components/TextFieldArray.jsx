@@ -12,11 +12,7 @@ function TextFieldArray({ controlledFields, append }) {
                 <button
                     type="button"
                     className="cursor-pointer bg-green px-2 py-px w-fit rounded-lg text-tan font-bold hover:bg-green-400"
-                    onClick={() =>
-                        append({
-                            name: "",
-                        })
-                    }
+                    onClick={() => append("")}
                 >
                     + Add
                 </button>

@@ -76,7 +76,7 @@ function Card({ civilization, setIsEditing, setSelectedCivilization }) {
                     </p>
 
                     <ul className="pl-8 pr-3 flex gap-1 flex-col">
-                        {JSON.parse(civilization_bonus).map((bonus) => (
+                        {JSON.parse(civilization_bonus)?.map((bonus) => (
                             <li
                                 key={bonus}
                                 className="list-disc list-outside text-tan leading-0"

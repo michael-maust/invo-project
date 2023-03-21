@@ -2,6 +2,7 @@ import { useEffect, useCallback } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { Inertia } from "@inertiajs/inertia";
 
 const schema = z.object({
     name: z.string().min(1, "Name is required"),
@@ -10,6 +11,7 @@ const schema = z.object({
     unique_unit: z.string().min(1, "Unique unit is required"),
     unique_tech: z.string().min(1, "Unique tech is required"),
     team_bonus: z.string().min(1, "Team bonus is required"),
+    civilization_bonus: z.array(),
 });
 
 function useMutateCivilizationForm({ selectedCivilization }) {
@@ -32,7 +34,6 @@ function useMutateCivilizationForm({ selectedCivilization }) {
     });
 
     const watchFieldArray = watch("civilization_bonus");
-    console.log({ watchFieldArray, fields });
     const controlledFields = fields.map((field, index) => {
         return {
             ...field,
@@ -43,14 +44,20 @@ function useMutateCivilizationForm({ selectedCivilization }) {
     useEffect(() => {
         reset({
             ...selectedCivilization,
-            civilization_bonus: parsedBonusArray,
+            civilization_bonus: parsedBonusArray ?? [],
         });
     }, [selectedCivilization]);
 
     const isUpdating = selectedCivilization === null;
 
     const onSubmit = useCallback((data) => {
-        console.log(data);
+        console.log(JSON.stringify(data.civilization_bonus), data);
+        Inertia.post(
+            route("civilization.store", {
+                civilization_bonus: JSON.stringify(data.civilization_bonus),
+                ...data,
+            })
+        );
     }, []);
 
     return {

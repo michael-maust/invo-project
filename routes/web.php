@@ -27,5 +27,7 @@ Route::get(
 
 
 Route::get('/edit', [CivilizationsController::class, 'edit'])->name('civilization.edit');
+Route::get('/create', [CivilizationsController::class, 'create'])->name('civilization.create');
+Route::post('/civilizations', [CivilizationsController::class, 'store'])->name('civilization.store');
 Route::patch('/update', [CivilizationsController::class, 'update'])->name('civilization.update');
 Route::delete('/{civilization}', [CivilizationsController::class, 'destroy'])->name('civilization.destroy');
