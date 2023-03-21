@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('unique_tech');
             $table->string('team_bonus');
             $table->json('civilization_bonus')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

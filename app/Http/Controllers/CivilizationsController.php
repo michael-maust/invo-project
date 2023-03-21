@@ -16,6 +16,7 @@ class CivilizationsController extends Controller
     public function index(Request $request)
     {
         $query = $request->input('query');
+        // TODO: figure out way to prevent created_at from being update on updates
         $civilizations = Civilization::where('name', 'like', "%$query%")->orderBy('created_at', 'desc')->get();
 
         return Inertia::render('Welcome', [
@@ -30,9 +31,22 @@ class CivilizationsController extends Controller
 
     public function store(CivilizationRequest $request)
     {
+        $request['civilization_bonus'] = json_encode($request['civilization_bonus']);
+
         Civilization::create($request->validated());
 
         return Redirect::back(303)->with('success', 'Civilization created.');
+    }
+
+
+    public function update(CivilizationRequest $request, Civilization $civilization)
+    {
+        $validatedData = $request->validated()->save();
+        $validatedData['civilization_bonus'] = json_encode($validatedData['civilization_bonus']);
+
+        $civilization->update($validatedData);
+
+        return Redirect::back(303)->with('success', 'Civilization updated.');
     }
 
 

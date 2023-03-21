@@ -11,7 +11,6 @@ const schema = z.object({
     unique_unit: z.string().min(1, "Unique unit is required"),
     unique_tech: z.string().min(1, "Unique tech is required"),
     team_bonus: z.string().min(1, "Team bonus is required"),
-    civilization_bonus: z.array(),
 });
 
 function useMutateCivilizationForm({ selectedCivilization }) {
@@ -50,15 +49,26 @@ function useMutateCivilizationForm({ selectedCivilization }) {
 
     const isUpdating = selectedCivilization === null;
 
-    const onSubmit = useCallback((data) => {
-        console.log(JSON.stringify(data.civilization_bonus), data);
-        Inertia.post(
-            route("civilization.store", {
-                civilization_bonus: JSON.stringify(data.civilization_bonus),
-                ...data,
-            })
-        );
-    }, []);
+    const onSubmit = useCallback(
+        (data) => {
+            console.log(watchFieldArray, data);
+
+            isUpdating
+                ? Inertia.post(
+                      route(("civilization.update", selectedCivilization.id), {
+                          civilization_bonus: JSON.stringify(watchFieldArray),
+                          ...data,
+                      })
+                  )
+                : Inertia.post(
+                      route("civilization.store", {
+                          civilization_bonus: JSON.stringify(watchFieldArray),
+                          ...data,
+                      })
+                  );
+        },
+        [watchFieldArray]
+    );
 
     return {
         methods,

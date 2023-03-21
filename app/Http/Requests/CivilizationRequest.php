@@ -28,7 +28,7 @@ class CivilizationRequest extends FormRequest
             'unique_unit' => ['nullable', 'max:200'],
             'unique_tech' => ['nullable', 'max:200'],
             'team_bonus' => ['nullable', 'max:200'],
-            'civilization_bonus' => ['nullable', 'max:10'],
+            'civilization_bonus' => ['nullable'],
         ];
     }
 }

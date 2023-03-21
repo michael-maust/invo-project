@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Civilization extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $fillable = ['name', 'expansion', 'army_type', 'unique_unit', 'unique_tech', 'team_bonus', 'civilization_bonus'];
+    protected $guarded = ['created_at'];
 }
