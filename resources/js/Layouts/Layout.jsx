@@ -1,12 +1,13 @@
-import BuildingVector from "public/pictures/BuildingVector.svg";
 import cx from "clsx";
+import ApplicationLogo from "@/Components/ApplicationLogo";
 
 export default function Layout({ children, className }) {
     return (
         <div className="min-h-screen bg-lightgray flex flex-1 flex-col sm:justify-center items-center pt-6 sm:pt-0 ">
-            <header className="flex justify-between w-full py-3 px-6 items-center bg-gray">
-                <img src={BuildingVector} />
-                Header
+            <header className="flex relative flex-col gap-3 justify-center w-full p-3 pt-6 items-center ">
+                <ApplicationLogo className="w-auto h-[75px] fill-tan text-gray-800 dark:text-gray-200" />
+
+                {/* <p className=" text-tan">Civilize</p> */}
             </header>
 
             <div
