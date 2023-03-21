@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class CivilizationsController extends Controller
 {
+    // TODO: remove this if authentication is later setup
     use WithoutMiddleware;
 
     public function index(Request $request)
@@ -18,14 +19,14 @@ class CivilizationsController extends Controller
         $query = $request->input('query');
         $civilizations = Civilization::where('name', 'like', "%$query%")->orderBy('created_at', 'desc')->get();
 
-        return Inertia::render('Welcome', [
+        return Inertia::render('Dashboard', [
             'civilizations' => $civilizations,
         ]);
     }
 
     public function create()
     {
-        return Inertia::render('Welcome');
+        return Inertia::render('Dashboard');
     }
 
     public function store(CivilizationRequest $request)

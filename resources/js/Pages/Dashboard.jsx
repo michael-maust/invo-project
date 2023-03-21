@@ -32,7 +32,7 @@ export default function Welcome(props) {
 
     return (
         <>
-            <Head title="Welcome" />
+            <Head title="Dashboard" />
             <Layout className="flex flex-col items-center">
                 <Toolbar
                     onQueryChange={setQuery}

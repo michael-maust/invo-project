@@ -40,7 +40,7 @@ function useMutateCivilizationForm({ selectedCivilization }) {
         };
     });
 
-    // Remove empty fields from array
+    // Removes empty fields from array
     const nonEmptyBonusArray = watchFieldArray.filter((item) => item !== "");
 
     useEffect(() => {
