@@ -26,6 +26,7 @@ https://user-images.githubusercontent.com/65863230/226677501-1b94b985-ccff-463c-
 ### Feature List
 - Search functionality for filtering through civilizations (by name and expansion) 
 - Ability to view, create, update, and delete civilizations
+- Fully accessible by keyboard
 
 ### Future Work
 - Improve query invalidation after PUT/POST requests (maybe implement React Query/RTK Query)
