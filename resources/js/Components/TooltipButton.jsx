@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Tooltip from "@radix-ui/react-tooltip";
 
+// TODO: extract tooltip wrapper to separate component to reduce duplication
 function TooltipButton({ icon, title, onClick }) {
     return (
         <Tooltip.Provider>

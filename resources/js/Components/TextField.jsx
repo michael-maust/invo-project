@@ -5,8 +5,7 @@ function TextField({ fieldName, label, ...props }) {
     const { register, control } = useFormContext();
 
     const {
-        field,
-        fieldState: { invalid, isTouched, isDirty, error },
+        fieldState: { error },
     } = useController({
         name: fieldName,
         control,

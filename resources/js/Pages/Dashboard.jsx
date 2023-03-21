@@ -13,9 +13,8 @@ export default function Welcome(props) {
     const civilizations = props.civilizations;
 
     const handleCreate = useCallback(() => {
-        console.log("Handle Create");
-        setIsEditing(true)
-        setSelectedCivilization(null)
+        setIsEditing(true);
+        setSelectedCivilization(null);
     }, []);
 
     // TODO: change filter to actually query the database to improve user performance

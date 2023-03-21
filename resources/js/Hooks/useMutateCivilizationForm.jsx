@@ -14,10 +14,13 @@ const schema = z.object({
 });
 
 function useMutateCivilizationForm({ selectedCivilization }) {
+
+    // Parse array from JSON and set empty string if undefined
     const parsedBonusArray = selectedCivilization?.civilization_bonus
         ? JSON.parse(selectedCivilization?.civilization_bonus)
         : [""];
 
+    // Initialize form
     const methods = useForm({
         defaultValues: {
             civilization_bonus: [],
@@ -25,8 +28,10 @@ function useMutateCivilizationForm({ selectedCivilization }) {
         },
         resolver: zodResolver(schema),
     });
+
     const { handleSubmit, reset, control, watch } = methods;
 
+    // Initialize logic for field array
     const { fields, append } = useFieldArray({
         control,
         name: "civilization_bonus",
@@ -51,12 +56,9 @@ function useMutateCivilizationForm({ selectedCivilization }) {
     }, [selectedCivilization]);
 
     const isUpdating = selectedCivilization !== null;
-    console.log({ isUpdating });
 
     const onSubmit = useCallback(
         (data) => {
-            console.log(isUpdating);
-
             isUpdating
                 ? Inertia.patch(
                       route("civilization.update", selectedCivilization.id),

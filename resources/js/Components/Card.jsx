@@ -8,7 +8,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import IconRow from "@/Components/IconRow";
 import TooltipButton from "./TooltipButton";
-import { useForm } from "@inertiajs/react";
 import { Inertia } from "@inertiajs/inertia";
 
 function Card({ civilization, setIsEditing, setSelectedCivilization }) {
@@ -33,7 +32,7 @@ function Card({ civilization, setIsEditing, setSelectedCivilization }) {
         <>
             <div className="bg-gray p-3 my-3 first:mt-0 rounded-lg break-inside-avoid w-full justify-start flex flex-col gap-2 shadow-md">
                 <section className="flex justify-between">
-                    <div className="">
+                    <div>
                         <p className="text-[1.5rem] leading-none text-primary font-bold pb-0">
                             {name}
                         </p>
@@ -45,7 +44,6 @@ function Card({ civilization, setIsEditing, setSelectedCivilization }) {
                             icon={faTrash}
                             title={"Remove"}
                             onClick={() => {
-                                console.log("Remove");
                                 handleDelete();
                             }}
                         />
@@ -54,7 +52,6 @@ function Card({ civilization, setIsEditing, setSelectedCivilization }) {
                             icon={faPencil}
                             title={"Edit"}
                             onClick={() => {
-                                console.log("Remove");
                                 setIsEditing(true);
                                 setSelectedCivilization(civilization);
                             }}
@@ -66,14 +63,30 @@ function Card({ civilization, setIsEditing, setSelectedCivilization }) {
 
                 <div className="flex flex-col gap-3">
                     {/* TODO: add tooltips on icons */}
-                    <IconRow icon={faTag} title={army_type} />
-                    <IconRow icon={faShieldHalved} title={unique_unit} />
-                    <IconRow icon={faGear} title={unique_tech} />
-                    <IconRow icon={faUserPlus} title={team_bonus} />
+                    <IconRow
+                        icon={faTag}
+                        title={army_type}
+                        tooltip="Army Type"
+                    />
+                    <IconRow
+                        icon={faShieldHalved}
+                        title={unique_unit}
+                        tooltip="Unique Unit"
+                    />
+                    <IconRow
+                        icon={faGear}
+                        title={unique_tech}
+                        tooltip="Unique Tech"
+                    />
+                    <IconRow
+                        icon={faUserPlus}
+                        title={team_bonus}
+                        tooltip="Team Bonus"
+                    />
                 </div>
 
                 {civilizationBonusArray?.length > 0 && (
-                    <section className="">
+                    <section>
                         <p className="text-primary text-lg font-bold italic">
                             Civilization Bonuses
                         </p>
