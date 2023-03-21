@@ -3,7 +3,7 @@ import ApplicationLogo from "@/Components/ApplicationLogo";
 
 export default function Layout({ children, className }) {
     return (
-        <div className="min-h-screen bg-lightgray flex flex-1 flex-col sm:justify-center items-center pt-6 sm:pt-0 ">
+        <div className="min-h-screen relative bg-lightgray flex flex-1 flex-col sm:justify-center items-center pt-6 sm:pt-0 ">
             <header className="flex relative flex-col justify-center w-full p-3 pt-6 items-center ">
                 <ApplicationLogo className="w-auto h-[75px] fill-tan text-gray-800 dark:text-gray-200" />
 

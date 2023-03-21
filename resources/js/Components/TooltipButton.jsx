@@ -5,7 +5,7 @@ function TooltipButton({ icon, title, onClick }) {
     return (
         <Tooltip.Provider>
             <Tooltip.Root delayDuration={0}>
-                <Tooltip.Trigger>
+                <Tooltip.Trigger asChild>
                     <button
                         onClick={onClick}
                         className="flex items-center gap-2 group/button bg-lightgray px-3 py-2 h-fit rounded-lg text-tan hover:text-primary transition-all duration-300 relative overflow-hidden"
