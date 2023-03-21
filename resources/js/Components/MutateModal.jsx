@@ -26,26 +26,26 @@ function MutateModal({ isEditing, setIsEditing, selectedCivilization }) {
         <Dialog.Root open={isEditing} onOpenChange={setIsEditing}>
             <Dialog.Portal>
                 <Dialog.Overlay className="bg-black/30 fixed inset-0" />
-                <Dialog.Content
-                    className="fixed inset-0 self-center h-fit mx-auto my-auto max-w-[450px] bg-gray rounded-xl shadow-lg p-3"
-                    forceMount={true}
-                >
-                    <div className="flex justify-between w-[90vw]">
-                        <h2 className="text-primary text-2xl font-bold mb-2">
-                            {isUpdating
-                                ? "Create Civilization"
-                                : "Update Civilization"}
-                        </h2>
-                        <FontAwesomeIcon
-                            className="w-[40px] fa-xl text-lightblue leading-1 mt-1 cursor-pointer hover:text-primary"
-                            icon={faXmark}
-                            onClick={() => setIsEditing(false)}
-                        />
-                    </div>
-                    <FormProvider {...methods}>
+                <FormProvider {...methods}>
+                    <Dialog.Content
+                        className="fixed grid grid-rows-[auto,1fr,auto] inset-0 self-center overflow-y-auto h-fit mx-auto my-auto max-w-[450px] max-h-[90vh] w-[90vw] bg-gray rounded-xl shadow-lg p-3"
+                        forceMount={true}
+                    >
+                        <section className="flex justify-between  px-1">
+                            <h2 className="text-primary text-2xl font-bold mb-2">
+                                {isUpdating
+                                    ? "Update Civilization"
+                                    : "Create Civilization"}
+                            </h2>
+                            <FontAwesomeIcon
+                                className="w-[40px] fa-xl text-lightblue leading-1 mt-1 cursor-pointer hover:text-primary"
+                                icon={faXmark}
+                                onClick={() => setIsEditing(false)}
+                            />
+                        </section>
                         <form
                             onSubmit={handleSubmit(onSubmit)}
-                            className="flex flex-col gap-3 "
+                            className="flex flex-col gap-3 overflow-y-auto p-1 pr-5"
                         >
                             <div className="grid grid-cols-2 gap-3">
                                 <TextField
@@ -88,14 +88,19 @@ function MutateModal({ isEditing, setIsEditing, selectedCivilization }) {
                                 controlledFields={controlledFields}
                                 append={append}
                             />
-
-                            <input
-                                type="submit"
-                                className="cursor-pointer bg-green px-2 py-1 w-fit rounded-lg text-tan font-bold hover:bg-green-400"
-                            />
+                            {/* Hidden submit used as a quick way to enable submit onEnter */}
+                            <input type="submit" className="hidden" />
                         </form>
-                    </FormProvider>
-                </Dialog.Content>
+                        <section className="pt-3 px-1">
+                            <button
+                                onClick={handleSubmit(onSubmit)}
+                                className="cursor-pointer focus:outline-none focus:ring-primary-400 focus:ring-2 bg-green px-3 py-1 w-fit rounded-lg text-tan font-bold hover:bg-green-400"
+                            >
+                                {isUpdating ? "Update" : "Create"}
+                            </button>
+                        </section>
+                    </Dialog.Content>
+                </FormProvider>
             </Dialog.Portal>
         </Dialog.Root>
     );

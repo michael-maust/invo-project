@@ -40,6 +40,9 @@ function useMutateCivilizationForm({ selectedCivilization }) {
         };
     });
 
+    // Remove empty fields from array
+    const nonEmptyBonusArray = watchFieldArray.filter((item) => item !== "");
+
     useEffect(() => {
         reset({
             ...selectedCivilization,
@@ -58,16 +61,17 @@ function useMutateCivilizationForm({ selectedCivilization }) {
                 ? Inertia.patch(
                       route("civilization.update", selectedCivilization.id),
                       {
-                          civilization_bonus: JSON.stringify(watchFieldArray),
+                          civilization_bonus:
+                              JSON.stringify(nonEmptyBonusArray),
                           ...data,
                       }
                   )
                 : Inertia.post(route("civilization.store"), {
-                      civilization_bonus: JSON.stringify(watchFieldArray),
+                      civilization_bonus: JSON.stringify(nonEmptyBonusArray),
                       ...data,
                   });
         },
-        [isUpdating, watchFieldArray]
+        [isUpdating, nonEmptyBonusArray]
     );
 
     return {

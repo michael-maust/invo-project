@@ -39,7 +39,7 @@ export default function Welcome(props) {
                     query={query}
                     onCreate={handleCreate}
                 />
-                <div className="xl:columns-4 columns-1 md:columns-2 lg:columns-3 gap-3 [column-fill:_balance] max-w-[90vw]">
+                <div className="xl:columns-4 columns-1 md:columns-2 lg:columns-3 gap-3 [column-fill:_balance] max-w-[90vw] w-screen">
                     {filteredData.map((civilization) => (
                         <Card
                             key={civilization.id}

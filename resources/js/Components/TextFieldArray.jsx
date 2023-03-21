@@ -11,7 +11,7 @@ function TextFieldArray({ controlledFields, append }) {
 
                 <button
                     type="button"
-                    className="cursor-pointer bg-green px-2 py-px w-fit rounded-lg text-tan font-bold hover:bg-green-400"
+                    className="cursor-pointer focus:outline-none focus:ring-primary-400 focus:ring-2 bg-green px-2 py-px w-fit rounded-lg text-tan font-bold hover:bg-green-400"
                     onClick={() => append("")}
                 >
                     + Add

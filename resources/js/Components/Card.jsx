@@ -27,6 +27,8 @@ function Card({ civilization, setIsEditing, setSelectedCivilization }) {
         Inertia.delete(route("civilization.destroy", id));
     };
 
+    const civilizationBonusArray = JSON.parse(civilization_bonus);
+
     return (
         <>
             <div className="bg-gray p-3 my-3 first:mt-0 rounded-lg break-inside-avoid w-full justify-start flex flex-col gap-2 shadow-md">
@@ -70,22 +72,24 @@ function Card({ civilization, setIsEditing, setSelectedCivilization }) {
                     <IconRow icon={faUserPlus} title={team_bonus} />
                 </div>
 
-                <section className="">
-                    <p className="text-primary text-lg font-bold italic">
-                        Civilization Bonuses
-                    </p>
+                {civilizationBonusArray?.length > 0 && (
+                    <section className="">
+                        <p className="text-primary text-lg font-bold italic">
+                            Civilization Bonuses
+                        </p>
 
-                    <ul className="pl-8 pr-3 flex gap-1 flex-col">
-                        {JSON.parse(civilization_bonus)?.map((bonus) => (
-                            <li
-                                key={bonus}
-                                className="list-disc list-outside text-tan leading-0"
-                            >
-                                {bonus}
-                            </li>
-                        ))}
-                    </ul>
-                </section>
+                        <ul className="pl-8 pr-3 flex gap-1 flex-col">
+                            {civilizationBonusArray?.map((bonus) => (
+                                <li
+                                    key={bonus}
+                                    className="list-disc list-outside text-tan leading-0"
+                                >
+                                    {bonus}
+                                </li>
+                            ))}
+                        </ul>
+                    </section>
+                )}
             </div>
         </>
     );
