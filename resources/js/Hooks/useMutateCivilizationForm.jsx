@@ -47,27 +47,27 @@ function useMutateCivilizationForm({ selectedCivilization }) {
         });
     }, [selectedCivilization]);
 
-    const isUpdating = selectedCivilization === null;
+    const isUpdating = selectedCivilization !== null;
+    console.log({ isUpdating });
 
     const onSubmit = useCallback(
         (data) => {
-            console.log(watchFieldArray, data);
+            console.log(isUpdating);
 
             isUpdating
-                ? Inertia.post(
-                      route(("civilization.update", selectedCivilization.id), {
+                ? Inertia.patch(
+                      route("civilization.update", selectedCivilization.id),
+                      {
                           civilization_bonus: JSON.stringify(watchFieldArray),
                           ...data,
-                      })
+                      }
                   )
-                : Inertia.post(
-                      route("civilization.store", {
-                          civilization_bonus: JSON.stringify(watchFieldArray),
-                          ...data,
-                      })
-                  );
+                : Inertia.post(route("civilization.store"), {
+                      civilization_bonus: JSON.stringify(watchFieldArray),
+                      ...data,
+                  });
         },
-        [watchFieldArray]
+        [isUpdating, watchFieldArray]
     );
 
     return {
