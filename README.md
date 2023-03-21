@@ -31,4 +31,4 @@ https://user-images.githubusercontent.com/65863230/226677501-1b94b985-ccff-463c-
 ### Future Work
 - Improve query invalidation after PUT/POST requests (maybe implement React Query/RTK Query)
 - Integrate TypeScript for better type safety
-- Reduce code duplication by implementing more reusable components and add custom utility Tailwind classes 
+- Reduce code duplication by implementing more reusable components and adding custom utility Tailwind classes 
