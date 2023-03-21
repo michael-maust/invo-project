@@ -21,10 +21,7 @@ function Card({ civilization }) {
         civilization_bonus,
     } = civilization;
     return (
-        <div
-            key={id}
-            className="bg-gray p-3 rounded-lg max-w-xs w-[90vw] justify-start flex flex-col gap-2 shadow-md"
-        >
+        <div className="bg-gray p-3 my-3 first:mt-0 rounded-lg break-inside-avoid w-full justify-start flex flex-col gap-2 shadow-md">
             <section className="flex justify-between">
                 <div className="">
                     <p className="text-[1.5rem] leading-none text-primary font-bold pb-0">
@@ -33,7 +30,7 @@ function Card({ civilization }) {
                     <p className="text-tan italic text-base">{expansion}</p>
                 </div>
 
-                <div className="flex gap-1">
+                <div className="flex gap-1 justify-start items-start">
                     <TooltipButton
                         icon={faTrash}
                         title={"Remove"}
@@ -56,6 +53,20 @@ function Card({ civilization }) {
                 <IconRow icon={faGear} title={unique_tech} />
                 <IconRow icon={faUserPlus} title={team_bonus} />
             </div>
+
+            <section className="">
+                <p className="text-primary text-lg font-bold italic">
+                    Civilization Bonuses
+                </p>
+
+                <ul className="pl-8 pr-3 flex gap-1 flex-col">
+                    {JSON.parse(civilization_bonus).map((bonus) => (
+                        <li className="list-disc list-outside text-tan leading-0">
+                            {bonus}
+                        </li>
+                    ))}
+                </ul>
+            </section>
         </div>
     );
 }
